@@ -1,0 +1,2 @@
+!!!info "SDK bundle size"
+    You can get an estimate of the SDK bundle size by downloading the `tar.gz` file of the version you are using [here](https://pub.dev/packages/amplitude_flutter/versions). Note this is NOT the final size, because flutter has tree shaking.

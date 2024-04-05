@@ -533,7 +533,9 @@ nav:
         - Ampli Codegen: data/sdks/typescript-react-native/ampli.md
       - Flutter:
         - data/sdks/flutter/index.md
-        # - Migration Guide: data/sdks/flutter/migration.md
+      - Flutter (Beta):
+        - data/sdks/flutter-4/index.md
+        - Migration Guide: data/sdks/flutter/migration.md
       - Python:
         - data/sdks/python/index.md
         - Ampli Codegen: data/sdks/python/ampli.md
