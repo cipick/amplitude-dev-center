@@ -120,3 +120,19 @@ final Amplitude analytics = Amplitude(Configuration(
     serverZone: ServerZone.eu,
 ));
 ```
+
+### Track
+
+Events represent how users interact with your application. For example, "Song Played" may be an action you want to note.
+
+```dart
+amplitude.track(BaseEvent('Song Played'));
+```
+
+You can also optionally include event properties.
+
+```dart
+amplitude.track(BaseEvent('Song Played', eventProperties: {'title': 'Happy Birthday'}));
+```
+
+Refer to the [BaseEvent](https://github.com/amplitude/Amplitude-Flutter/blob/beta/lib/events/base_event.dart) interface for all available fields.
