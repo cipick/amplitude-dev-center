@@ -97,10 +97,10 @@ class YourClass {
     | `useAdvertisingIdForDeviceId` | `bool`. Whether to use advertising id as device id. Check [here](/data/sdks/android-kotlin/#advertiser-id) for required module and permission. | `false` |
     | `useAppSetIdForDeviceId` | `bool`.  Whether to use app set id as device id. Check [here](/data/sdks/android-kotlin/#app-set-id) for required module and permission. | `false` |
 
-???config "Configuration Options for Web only"
+<!-- ???config "Configuration Options for Web only"
     | <div class="big-column">Name</div>  | Description | Default Value |
     | --- | --- | --- |
-    |`appVersion` | `String`. Sets an app version for events tracked. This can be the version of your application. For example: "1.0.0" | `undefined` |
+    |`appVersion` | `String`. Sets an app version for events tracked. This can be the version of your application. For example: "1.0.0" | `undefined` | -->
     
 --8<-- "includes/sdk-ts/shared-batch-configuration.md"
 
@@ -147,3 +147,114 @@ final Identify identify = Identify()
 amplitude.identify(identify)
 ```
 
+### Tracking default events
+
+the SDK can track more default events. You can configure it to track the following events by default:
+
+- Sessions
+- App lifecycles
+- Deep links (now only available on Android)
+
+???config "Tracking default events options"
+    | <div class="big-column">Name</div> | Type | Default Value | Description |
+    |-|-|-|-|
+    `config.defaultTracking.sessions` | Optional. `bool` | `true` | Enables session tracking. If value is `true`, Amplitude tracks session start and session end events otherwise, Amplitude doesn't track session events. When this setting is `false`, Amplitude tracks `sessionId` only.<br /><br />See [Tracking sessions](#tracking-sessions) for more information.|
+    `config.defaultTracking.appLifecycles` | Optional. `bool` | `false` | Enables application lifecycle events tracking. If value is `true`, Amplitude tracks application installed, application updated, application opened, and application backgrounded events.<br /><br />Event properties tracked includes: `[Amplitude] Version`,<br /> `[Amplitude] Build`,<br /> `[Amplitude] Previous Version`, `[Amplitude] Previous Build`, `[Amplitude] From Background`<br /><br />See [Tracking application lifecycles](#tracking-application-lifecycles) for more information.|
+    `config.defaultTracking.deepLinks` | Optional. `bool` | `false` | Only available on Android. It enables deep link tracking. If value is `true`, Amplitude tracks deep link opened events.<br /><br />Event properties tracked includes: `[Amplitude] Link URL`, `[Amplitude] Link Referrer`<br /><br />See [Tracking deep links](#tracking-deep-links) for more information.|
+
+You can enable Amplitude to start tracking all events mentioned above, use the code sample below. Otherwise, you can omit the configuration to keep only session tracking enabled.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions.all()
+  )
+);
+```
+
+!!!warn
+    Amplitude may add more events in a future version, and this configuration enables tracking for those events as well.
+
+Similarly, you can disable Amplitude to track all events mentioned above with the code sample below.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions.none()
+  )
+);
+```
+
+You can also customize the tracking with `DefaultTrackingOptions`, see code sample below.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions(
+      sessions: false,
+      appLifecycles: true,
+      deepLinks: true,
+    )
+  )
+);
+```
+
+#### Tracking sessions
+
+You can enable Amplitude to start tracking session events by setting `configuration.defaultTracking.sessions` to `true`. Refer to the code sample below.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions(
+      sessions: true,
+    )
+  )
+);
+```
+
+#### Tracking application lifecycles
+
+You can enable Amplitude to start tracking application lifecycle events by setting `configuration.defaultTracking.appLifecycles` to `true`. Refer to the code sample below.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions(
+      appLifecycles: true,
+    )
+  )
+);
+```
+
+After enabling this setting, Amplitude tracks the following events:
+
+- `[Amplitude] Application Installed`, this event fires when a user opens the application for the first time right after installation.
+- `[Amplitude] Application Updated`, this event fires when a user opens the application after updating the application.
+- `[Amplitude] Application Opened`, this event fires when a user launches or foregrounds the application after the first open.
+- `[Amplitude] Application Backgrounded`, this event fires when a user backgrounds the application.
+
+#### Tracking deep links
+
+!!!note
+    Deep links tracking is now only available on Android.
+
+You can enable Amplitude to start tracking deep link events by setting `configuration.defaultTracking.deepLinks` to `true`. Refer to the code sample below.
+
+```dart
+Amplitude(
+  Configuration(
+    apiKey: 'YOUR-API-KEY',
+    defaultTracking: DefaultTrackingOptions(
+      deepLinks: true,
+    )
+  )
+);
+```
+
+After enabling this setting, Amplitude tracks the `[Amplitude] Deep Link Opened` event with the URL and referrer information.
