@@ -136,3 +136,14 @@ amplitude.track(BaseEvent('Song Played', eventProperties: {'title': 'Happy Birth
 ```
 
 Refer to the [BaseEvent](https://github.com/amplitude/Amplitude-Flutter/blob/beta/lib/events/base_event.dart) interface for all available fields.
+
+### Identify
+
+--8<-- "includes/sdk-identify-reduction.md"
+
+```dart
+final Identify identify = Identify()
+    ..set('color', 'green')
+amplitude.identify(identify)
+```
+
