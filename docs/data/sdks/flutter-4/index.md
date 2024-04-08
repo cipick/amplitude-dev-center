@@ -258,3 +258,84 @@ Amplitude(
 ```
 
 After enabling this setting, Amplitude tracks the `[Amplitude] Deep Link Opened` event with the URL and referrer information.
+
+### User groups
+
+--8<-- "includes/editions-growth-enterprise-with-accounts.md"
+
+--8<-- "includes/groups-intro-paragraph.md"
+
+!!! example
+    If Joe is in 'orgId' '15', then the `groupName` would be '15'.
+
+    ```dart
+    // set group with a single group name
+    amplitude.setGroup('orgId', '15');
+    ```
+
+    If Joe is in 'sport' 'tennis' and 'soccer', then the `groupName` would be '["tennis", "soccer"]'.
+
+    ```kotlin
+    // set group with multiple group names
+    amplitude.setGroup('sport', ['tennis', 'soccer']);
+    ```
+
+--8<-- "includes/event-level-groups-intro.md"
+
+```dart
+amplitude.track(BaseEvent('event type',
+    eventProperties: {'event property': 'event property value'},
+    groups: {'ordId': '15'}));
+```
+
+### Group identify
+
+--8<-- "includes/editions-growth-enterprise-with-accounts.md"
+
+--8<-- "includes/group-identify-considerations.md"
+
+```dart
+final groupType = 'plan';
+final groupName = 'enterprise';
+
+final identify = Identify().set('key', 'value');
+amplitude.groupIdentify(groupType, groupName, identify);
+```
+
+### Track revenue
+
+--8<-- "includes/revenue-intro-paragraph.md"
+
+```dart
+final revenue = Revenue()
+  ..productId = 'com.company.productId'
+  ..price = 3.99
+  ..quantity = 3;
+amplitude.revenue(revenue);
+```
+
+--8<-- "includes/revenue-properties.md"
+
+### Custom user ID
+
+If your app has its login system that you want to track users with, you can call `setUserId` at any time.
+
+```dart
+amplitude.setUserId('user@amplitude.com');
+```
+
+### Custom device ID
+
+You can assign a new device ID using `deviceId`. When setting a custom device ID, make sure the value is sufficiently unique. Amplitude recommends using a UUID.
+
+```dart
+amplitude.setDeviceId('your-unique-device-id');
+```
+
+### Reset when user logs out
+
+--8<-- "includes/sdk-reset-when-user-logs-out-intro.md"
+
+```dart
+amplitude.reset();
+```
