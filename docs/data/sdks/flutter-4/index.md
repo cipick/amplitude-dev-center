@@ -4,7 +4,7 @@ description: The Amplitude Flutter SDK Installation & Quick Start guide.
 icon: simple/flutter
 ---
 
-This is the official documentation for the Amplitude Analytics Flutter SDK. The Flutter SDK lets you send events to Amplitude.
+This is the official documentation for the Amplitude Analytics Flutter SDK. The Flutter SDK lets you send events from your Flutter application to Amplitude.
 
 !!!beta "Flutter SDK Resources (Beta)"
     [:material-github: GitHub](https://github.com/amplitude/Amplitude-Flutter/tree/beta) · [:material-code-tags-check: Releases](https://github.com/amplitude/Amplitude-Flutter/releases) · [:material-book: Example](https://github.com/amplitude/Amplitude-Flutter/tree/beta/example)
@@ -26,17 +26,17 @@ This is the official documentation for the Amplitude Analytics Flutter SDK. The 
 
 2. Run `flutter pub get` in the terminal to install the SDK.
 
-### iOS installation
+#### iOS installation
 
 Add `platform :ios, '10.0'` to your Podfile.
 
 To enable Bitcode, follow Flutter's [documentation](https://github.com/flutter/flutter/wiki/Creating-an-iOS-Bitcode-enabled-app).
 
-## Usage
+## Use
 
 ### Initialization
 
-Before you can instrument, you must initialize the SDK using the API key for your Amplitude project.
+Before you instrument your application, initialize the SDK with your Amplitude project's API key.
 
 ```dart
 import 'package:amplitude_flutter/amplitude.dart';
@@ -124,7 +124,7 @@ final Amplitude analytics = Amplitude(Configuration(
 
 ### Track
 
-Events represent how users interact with your application. For example, "Song Played" may be an action you want to note.
+Events represent how users interact with your application. For example, "Song Played" may be an action you want to track.
 
 ```dart
 amplitude.track(BaseEvent('Song Played'));
@@ -150,7 +150,7 @@ amplitude.identify(identify)
 
 ### Tracking default events
 
-the SDK can track more default events. You can configure it to track the following events by default:
+The SDK can track more default events. You can configure it to track the following events by default:
 
 - Sessions
 - App lifecycles
@@ -177,7 +177,7 @@ Amplitude(
 !!!warn
     Amplitude may add more events in a future version, and this configuration enables tracking for those events as well.
 
-Similarly, you can disable Amplitude to track all events mentioned above with the code sample below.
+Similarly, you can prevent Amplitude from track default events with the following code sample:
 
 ```dart
 Amplitude(
@@ -188,7 +188,7 @@ Amplitude(
 );
 ```
 
-You can also customize the tracking with `DefaultTrackingOptions`, see code sample below.
+You can also customize the tracking with `DefaultTrackingOptions`.
 
 ```dart
 Amplitude(
@@ -205,7 +205,7 @@ Amplitude(
 
 #### Tracking sessions
 
-You can enable Amplitude to start tracking session events by setting `configuration.defaultTracking.sessions` to `true`. Refer to the code sample below.
+When you set `configuration.defaultTracking.sessions: true`, you instruct Amplitude to track session events.
 
 ```dart
 Amplitude(
@@ -220,7 +220,7 @@ Amplitude(
 
 #### Tracking application lifecycles
 
-You can enable Amplitude to start tracking application lifecycle events by setting `configuration.defaultTracking.appLifecycles` to `true`. Refer to the code sample below.
+When you set `configuration.defaultTracking.appLifecycles` to `true`, Amplitude tracks application lifecycle events.
 
 ```dart
 Amplitude(
@@ -243,9 +243,9 @@ After enabling this setting, Amplitude tracks the following events:
 #### Tracking deep links
 
 !!!note
-    Deep links tracking is now only available on Android.
+    Deep link tracking is available on Android.
 
-You can enable Amplitude to start tracking deep link events by setting `configuration.defaultTracking.deepLinks` to `true`. Refer to the code sample below.
+When you set `configuration.defaultTracking.deepLinks` to `true`, Amplitude tracks events related to deep links in your application.
 
 ```dart
 Amplitude(
@@ -319,7 +319,7 @@ amplitude.revenue(revenue);
 
 ### Custom user ID
 
-If your app has its login system that you want to track users with, you can call `setUserId` at any time.
+If your app has its login system that you want to track users with, call `setUserId` at any time.
 
 ```dart
 amplitude.setUserId('user@amplitude.com');

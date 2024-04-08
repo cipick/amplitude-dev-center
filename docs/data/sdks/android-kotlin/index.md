@@ -181,7 +181,7 @@ amplitude.track(event)
 ### identify
 
 !!!note 
-    Starting from release v1.7.0, identify events with only set operations will be batched and sent with fewer events. This change won't affect running the set operations. There is a config `identifyBatchIntervalMillis` for managing the interval to flush the batched identify intercepts.
+    Starting in release v1.7.0, the SDK batches `identify` events that contain only `set` operiatons. This results in fewer sent events and doesn't impact the running of the `set` operations. Use the `identifyBatchIntervalMillis` configuration setting to manage the interval at which the SDK flushes batched identify intercepts.
 
 --8<-- "includes/sdk-identify-reduction.md"
 
