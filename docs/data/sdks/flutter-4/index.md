@@ -70,6 +70,7 @@ class YourClass {
     | `apiKey` | `String`. The apiKey of your project. | `null` |
     | `flushQueueSize` | `int`. SDK attempts to upload once unsent event count exceeds the event upload threshold or reaches `flushIntervalMillis` interval.  | `30` |
     | `flushIntervalMillis` | `int`. The amount of time SDK attempts to upload the unsent events to the server or reaches the `flushQueueSize` threshold. The value is in milliseconds. | `30000` |
+    | `instanceName` | `String`. The name of the instance. Instances with the same name shares storage and identity. For isolated storage and identity use a unique `instanceName` for each instance.  | `$default_instance`|
     | `optOut` | `bool`. Opt the user out of tracking. | `false` |
     | `logLevel` | `LogLevel` The log level. `LogLevel.off`, `LogLevel.error`, `LogLevel.warn`, `LogLevel.log`, `LogLevel.debug` | `LogLevel.warn` | 
     | `minIdLength` | `int`. The minimum length for user id or device id. | `5` |
