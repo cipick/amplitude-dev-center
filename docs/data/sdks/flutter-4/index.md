@@ -17,7 +17,7 @@ This is the official documentation for the Amplitude Analytics Flutter SDK. The 
 
 ### Install the dependency
 
-1. Go to the `pubspec.yaml file` and add Amplitude SDK as a dependency.
+1. Go to the `pubspec.yaml` file and add Amplitude SDK as a dependency.
 
     ```yml
     dependencies:
@@ -276,7 +276,7 @@ After enabling this setting, Amplitude tracks the `[Amplitude] Deep Link Opened`
 
     If Joe is in 'sport' 'tennis' and 'soccer', then the `groupName` would be '["tennis", "soccer"]'.
 
-    ```kotlin
+    ```dart
     // set group with multiple group names
     amplitude.setGroup('sport', ['tennis', 'soccer']);
     ```
