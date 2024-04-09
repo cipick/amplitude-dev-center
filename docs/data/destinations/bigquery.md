@@ -48,6 +48,7 @@ To get started with exporting to BigQuery, you need the following:
         - `bigquery.transfers.get`
         - `bigquery.transfers.update`
         - `bigquery.datasets.update`
+        - `iam.serviceAccounts.getAccessToken`
 
 After you've created a service account, generate and download the service account key file and upload it to Amplitude. **Make sure you export Amplitude's account key in JSON format**.
 
